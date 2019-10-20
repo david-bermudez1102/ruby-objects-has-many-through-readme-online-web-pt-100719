@@ -13,10 +13,14 @@ class Customer
   end
 
   def new_meal(waiter,total,tip)
-    Meal.new(self,waiter,total,tip)
+    Meal.new(waiter,self,total,tip)
   end
 
   def meals
+    Meal.all.select {|meal| meal.customer == self}
+  end
+
+  def waiters
     Meal.all.select {|meal| meal.customer == self}
   end
 end
